@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ammucale</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="icononav2-removebg-preview.png" type="image/png">
+    <link rel="shortcut icon" href="icononav2-removebg-preview.png" type="image/png">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde-oscuro: #2D4F2A;
+            --verde-medio: #4A7A3D;
+            --verde-claro: #7DB066;
+            --tierra: #8B5E3C;
+            --tierra-claro: #C89468;
+            --crema: #F5F0E8;
+            --crema-oscuro: #EAE2D0;
+            --blanco: #FEFDF9;
+            --texto: #1E2E1C;
+            --texto-medio: #4A5E45;
+            --acento-rojo: #B5341A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--blanco);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--verde-oscuro);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-logo span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--crema);
+            letter-spacing: 0.02em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: rgba(245, 240, 232, 0.75);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: var(--crema);
+        }
+
+        /* ── HERO ── */
+        #inicio {
+            min-height: 100vh;
+            padding-top: 64px;
+            background: var(--verde-oscuro);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            padding: 6rem 3rem 6rem 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--tierra-claro);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            color: var(--crema);
+            line-height: 1.12;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--verde-claro);
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(245, 240, 232, 0.72);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background: var(--tierra);
+            color: var(--crema);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            transition: background 0.25s;
+        }
+
+        .hero-cta:hover {
+            background: var(--tierra-claro);
+            color: var(--texto);
+        }
+
+        .hero-visual {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem 4rem 1rem;
+            position: relative;
+        }
+
+        .hero-circle {
+            width: min(520px, 90%);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 2px solid rgba(125, 176, 102, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-circle::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(125, 176, 102, 0.15);
+        }
+
+        .hero-circle-img {
+            width: 70%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(125, 176, 102, 0.4);
+        }
+
+        .hero-stat {
+            position: absolute;
+            background: var(--tierra);
+            padding: 0.75rem 1.25rem;
+            color: var(--crema);
+        }
+
+        .hero-stat--top {
+            top: 15%;
+            right: -10%;
+        }
+
+        .hero-stat--bottom {
+            bottom: 15%;
+            left: -10%;
+        }
+
+        .hero-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* ── SECCIONES GENERALES ── */
+        section {
+            padding: 7rem 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--tierra);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            line-height: 1.2;
+            color: var(--verde-oscuro);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            color: var(--texto-medio);
+            max-width: 640px;
+            line-height: 1.8;
+        }
+
+        /* ── QUIÉNES SOMOS ── */
+        #quienes {
+            background: var(--crema);
+        }
+
+        .quienes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .quienes-img-wrap {
+            position: relative;
+        }
+
+        .quienes-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            background: var(--verde-medio);
+            display: block;
+        }
+
+        .quienes-img-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(160deg, var(--verde-medio) 0%, var(--verde-oscuro) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quienes-img-placeholder svg {
+            opacity: 0.18;
+            width: 60%;
+            height: auto;
+        }
+
+        .quienes-accent {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            width: 60%;
+            background: var(--tierra);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quienes-accent-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--crema);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .quienes-text {
+            padding-bottom: 2rem;
+        }
+
+        .quienes-text .section-body {
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── VISIÓN Y MISIÓN ── */
+        #vision {
+            background: var(--verde-oscuro);
+        }
+
+        #vision .section-eyebrow {
+            color: var(--verde-claro);
+        }
+
+        #vision .section-title {
+            color: var(--crema);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            margin-top: 4rem;
+            background: rgba(125, 176, 102, 0.2);
+            border: 1px solid rgba(125, 176, 102, 0.2);
+        }
+
+        .vision-card {
+            background: var(--verde-oscuro);
+            padding: 3rem 2.5rem;
+        }
+
+        .vision-card-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 1.5rem;
+            color: var(--verde-claro);
+        }
+
+        .vision-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--crema);
+            margin-bottom: 1rem;
+        }
+
+        .vision-card p {
+            color: rgba(245, 240, 232, 0.7);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ── OBJETIVOS ── */
+        #objetivos {
+            background: var(--blanco);
+        }
+
+        .objetivos-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .objetivos-lista {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--crema-oscuro);
+        }
+
+        .objetivo-item {
+            padding: 2rem;
+            border-right: 1px solid var(--crema-oscuro);
+            border-bottom: 1px solid var(--crema-oscuro);
+        }
+
+        .objetivo-item:nth-child(even) {
+            border-right: none;
+        }
+
+        .objetivo-item:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .objetivo-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--tierra-claro);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .objetivo-item h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--verde-oscuro);
+            margin-bottom: 0.5rem;
+        }
+
+        .objetivo-item p {
+            font-size: 0.88rem;
+            color: var(--texto-medio);
+            line-height: 1.7;
+        }
+
+        /* ── TRAYECTORIA ── */
+        #trayectoria {
+            background: var(--crema);
+        }
+
+        .timeline {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 130px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--verde-claro);
+            opacity: 0.4;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 2rem;
+            padding: 0 0 3.5rem;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--tierra);
+            text-align: right;
+            padding-top: 0.25rem;
+            position: relative;
+        }
+
+        .timeline-year::after {
+            content: '';
+            position: absolute;
+            right: -2.5rem;
+            top: 0.6rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--verde-claro);
+            border: 2px solid var(--crema);
+            box-shadow: 0 0 0 1px var(--verde-claro);
+        }
+
+        .timeline-content h4 {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--verde-oscuro);
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--texto-medio);
+            line-height: 1.75;
+        }
+
+        /* ── PROGRAMAS ── */
+        #programas {
+            background: var(--blanco);
+        }
+
+        .programas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--crema-oscuro);
+            border: 1px solid var(--crema-oscuro);
+            margin-top: 4rem;
+        }
+
+        .programa-card {
+            background: var(--blanco);
+            padding: 2.5rem 2rem;
+        }
+
+        .programa-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.25rem;
+            background: var(--verde-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .programa-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--crema);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .programa-card h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--verde-oscuro);
+            margin-bottom: 0.75rem;
+        }
+
+        .programa-card p {
+            font-size: 0.88rem;
+            color: var(--texto-medio);
+            line-height: 1.7;
+        }
+
+        /* ── GALERÍA ── */
+        #galeria {
+            background: var(--crema);
+        }
+
+        .galeria-intro {
+            margin-bottom: 3rem;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 260px 260px;
+            gap: 8px;
+        }
+
+        .galeria-item {
+            background: var(--verde-medio);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .galeria-item:first-child {
+            grid-row: 1 / 3;
+        }
+
+        .galeria-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--verde-medio);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .galeria-placeholder:nth-child(2n) {
+            background: var(--verde-oscuro);
+        }
+
+        .galeria-item:nth-child(2) .galeria-placeholder {
+            background: var(--tierra);
+        }
+
+        .galeria-item:nth-child(3) .galeria-placeholder {
+            background: var(--verde-claro);
+        }
+
+        .galeria-item:nth-child(4) .galeria-placeholder {
+            background: var(--verde-oscuro);
+        }
+
+        .galeria-item:nth-child(5) .galeria-placeholder {
+            background: var(--tierra-claro);
+        }
+
+        .galeria-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .galeria-add-icon {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .galeria-add-icon::before {
+            content: '+';
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* ── CONTACTO ── */
+        #contacto {
+            background: var(--verde-oscuro);
+        }
+
+        #contacto .section-eyebrow {
+            color: var(--verde-claro);
+        }
+
+        #contacto .section-title {
+            color: var(--crema);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .contacto-info p {
+            color: rgba(245, 240, 232, 0.7);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contacto-dato {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contacto-dato-icon {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            border: 1px solid rgba(125, 176, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contacto-dato-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--verde-claro);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contacto-dato-text p:first-child {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--verde-claro);
+            margin-bottom: 0.2rem;
+        }
+
+        .contacto-dato-text p:last-child {
+            color: var(--crema);
+            font-size: 0.95rem;
+        }
+
+        .contacto-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--verde-claro);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(245, 240, 232, 0.06);
+            border: 1px solid rgba(125, 176, 102, 0.25);
+            color: var(--crema);
+            padding: 0.75rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: rgba(125, 176, 102, 0.6);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            padding: 0.9rem 2rem;
+            background: var(--tierra);
+            color: var(--crema);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            align-self: flex-start;
+            transition: background 0.2s;
+        }
+
+        .form-submit:hover {
+            background: var(--tierra-claro);
+            color: var(--texto);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #1A2E18;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(125, 176, 102, 0.15);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--crema);
+            font-size: 1.1rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.8rem;
+            color: rgba(245, 240, 232, 0.45);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(245, 240, 232, 0.35);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            #inicio {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 4rem 2rem 3rem;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .quienes-grid,
+            .vision-grid,
+            .objetivos-intro,
+            .contacto-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .programas-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, 220px);
+            }
+
+            .galeria-item:first-child {
+                grid-row: auto;
+            }
+
+            .timeline::before {
+                left: 80px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 80px 1fr;
+            }
+
+            .timeline-year::after {
+                right: -2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#inicio" class="nav-logo">
+            <!-- Reemplaza src con la ruta real del logo -->
+            <img src="icononav2.png" alt="Logo AMMUCALE" onerror="this.style.display='none'" />
+            <span>AMMUCALE</span>
+        </a>
+        <ul>
+            <li><a href="#quienes">Quiénes somos</a></li>
+            <li><a href="#vision">Visión</a></li>
+            <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#trayectoria">Trayectoria</a></li>
+            <li><a href="#programas">Programas</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="inicio">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Asociación de Mujeres Campesinas de Lebrija</p>
+            <h1 class="hero-title">
+                Sembrando <em>vida</em><br />en la tierra<br />y en las mujeres
+            </h1>
+            <p class="hero-subtitle">
+                Desde 2000, AMMUCALE fortalece los procesos productivos agroecológicos y mejora la calidad de vida de la
+                mujer rural en la región de Lebrija, Santander.
+            </p>
+            <a href="#quienes" class="hero-cta">Conoce nuestra historia</a>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-circle">
+                <!-- Logo central del hero – reemplaza src con imagen real -->
+                <img class="hero-circle-img" src="ammucale logo2.png" alt="Ilustración AMMUCALE"
+                    onerror="this.style.background='#4A7A3D'; this.style.opacity='0.6'" />
+                <div class="hero-stat hero-stat--top">
+                    <span class="hero-stat-num">+24</span>
+                    <span class="hero-stat-label">Años de experiencia</span>
+                </div>
+                <div class="hero-stat hero-stat--bottom">
+                    <span class="hero-stat-num">[N]</span>
+                    <span class="hero-stat-label">Mujeres beneficiadas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="quienes">
+        <div class="container">
+            <div class="quienes-grid">
+                <div class="quienes-img-wrap">
+                    <!-- Reemplaza con imagen real de la fundación -->
+                    <div class="quienes-img-placeholder">
+                        <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="40" r="28" stroke="white" stroke-width="1.5" />
+                            <path d="M20 160 C20 120 100 120 100 160" stroke="white" stroke-width="1.5" fill="none" />
+                            <path d="M30 80 Q60 55 90 80" stroke="white" stroke-width="1" fill="none"
+                                stroke-dasharray="4 3" />
+                        </svg>
+                        <img src="imagen1.jpg" alt="Fundación Ammucale" class="quienes-img">
+                    </div>
+                    <div class="quienes-accent">
+                        <p class="quienes-accent-text">"La tierra cuida a quien la cuida"</p>
+                    </div>
+                </div>
+                <div class="quienes-text">
+                    <p class="section-eyebrow">Quiénes somos</p>
+                    <h2 class="section-title">Una asociación arraigada en la tierra y en la comunidad</h2>
+                    <p class="section-body">
+                        La Asociación de Mujeres Campesinas de Lebrija —AMMUCALE— lleva más de 24 años adelantando
+                        procesos de mejoramiento de la calidad de vida de la mujer rural, fortaleciendo los procesos
+                        productivos agroecológicos sustentables en la región.
+                    </p>
+                    <br />
+                    <p class="section-body">
+                        [Aquí puedes agregar más información sobre los orígenes de la asociación, quiénes la fundaron,
+                        cuántas mujeres la integran hoy y cuál es su área de impacto geográfico en el municipio de
+                        Lebrija y alrededores.]
+                    </p>
+                    <br />
+                    <p class="section-body">
+                        [Párrafo adicional sobre los valores fundamentales que guían el trabajo de AMMUCALE:
+                        solidaridad, autonomía, soberanía alimentaria, cuidado del medio ambiente, entre otros.]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIÓN Y MISIÓN -->
+    <section id="vision">
+        <div class="container">
+            <p class="section-eyebrow">Propósito</p>
+            <h2 class="section-title">Nuestra visión y misión</h2>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <svg class="vision-card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22" cy="22" r="8" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M22 6V10M22 34V38M6 22H10M34 22H38" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M10.5 10.5L13.4 13.4M30.6 30.6L33.5 33.5M33.5 10.5L30.6 13.4M13.4 30.6L10.5 33.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    <h3>Visión</h3>
+                    <p>[Texto de la visión: Describe el futuro que AMMUCALE aspira a construir para las mujeres rurales
+                        de Lebrija y la región. ¿Cómo se imagina la asociación el territorio y la vida de las mujeres
+                        campesinas en los próximos años?]</p>
+                </div>
+                <div class="vision-card">
+                    <svg class="vision-card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22 4C13.2 4 6 11.2 6 20C6 26.6 9.8 32.3 15.4 35L16 40H28L28.6 35C34.2 32.3 38 26.6 38 20C38 11.2 30.8 4 22 4Z"
+                            stroke="currentColor" stroke-width="1.5" />
+                        <path d="M16 40H28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    <h3>Misión</h3>
+                    <p>[Texto de la misión: ¿Qué hace AMMUCALE cada día? Describe el propósito central de la asociación,
+                        las acciones concretas que realiza y a quiénes sirve. Por ejemplo: fortalecer capacidades,
+                        promover la soberanía alimentaria, generar ingresos, etc.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section id="objetivos">
+        <div class="container">
+            <div class="objetivos-intro">
+                <div>
+                    <p class="section-eyebrow">Objetivos</p>
+                    <h2 class="section-title">Lo que nos proponemos cada día</h2>
+                </div>
+                <div>
+                    <p class="section-body" style="padding-top: 0.75rem;">
+                        [Texto introductorio sobre los objetivos generales de AMMUCALE: ¿qué busca lograr la asociación
+                        a corto, mediano y largo plazo? ¿Cuáles son las áreas de trabajo prioritarias?]
+                    </p>
+                </div>
+            </div>
+            <div class="objetivos-lista">
+                <div class="objetivo-item">
+                    <span class="objetivo-num">01</span>
+                    <h4>Soberanía alimentaria</h4>
+                    <p>[Descripción del objetivo relacionado con la producción agroecológica, huertas, semillas nativas
+                        o sistemas productivos sostenibles.]</p>
+                </div>
+                <div class="objetivo-item">
+                    <span class="objetivo-num">02</span>
+                    <h4>Fortalecimiento organizativo</h4>
+                    <p>[Descripción del objetivo de fortalecer la estructura interna, el liderazgo de las mujeres y la
+                        participación comunitaria.]</p>
+                </div>
+                <div class="objetivo-item">
+                    <span class="objetivo-num">03</span>
+                    <h4>Generación de ingresos</h4>
+                    <p>[Descripción de los objetivos económicos: comercialización, emprendimientos, mercados
+                        agroecológicos u otras estrategias productivas.]</p>
+                </div>
+                <div class="objetivo-item">
+                    <span class="objetivo-num">04</span>
+                    <h4>Bienestar y salud</h4>
+                    <p>[Descripción del objetivo relacionado con la salud integral de las mujeres: medicina tradicional,
+                        nutrición, salud mental u otros aspectos del bienestar.]</p>
+                </div>
+                <div class="objetivo-item">
+                    <span class="objetivo-num">05</span>
+                    <h4>Educación y capacitación</h4>
+                    <p>[Descripción de los programas de formación, talleres, intercambio de saberes o educación
+                        ambiental que ofrece la asociación.]</p>
+                </div>
+                <div class="objetivo-item">
+                    <span class="objetivo-num">06</span>
+                    <h4>Incidencia y derechos</h4>
+                    <p>[Descripción del trabajo de incidencia política, defensa de derechos de las mujeres rurales o
+                        articulación con redes y organizaciones afines.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAYECTORIA -->
+    <section id="trayectoria">
+        <div class="container">
+            <p class="section-eyebrow">Historia</p>
+            <h2 class="section-title">24 años de siembra y cosecha</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-content">
+                        <h4>Fundación de AMMUCALE</h4>
+                        <p>[Descripción de cómo nació la asociación: cuántas mujeres la fundaron, en qué contexto, cuál
+                            fue la motivación inicial y quiénes fueron las primeras lideresas.]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">200X</div>
+                    <div class="timeline-content">
+                        <h4>[Hito importante]</h4>
+                        <p>[Descripción de un logro, proyecto o evento significativo en los primeros años de la
+                            asociación. Puede ser la apertura de un espacio, un primer convenio, una certificación,
+                            etc.]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">201X</div>
+                    <div class="timeline-content">
+                        <h4>[Hito de crecimiento]</h4>
+                        <p>[Descripción de un período de expansión o consolidación: nuevos programas, alianzas,
+                            reconocimientos o ampliación del número de asociadas.]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">201X</div>
+                    <div class="timeline-content">
+                        <h4>[Reconocimiento o alianza clave]</h4>
+                        <p>[Descripción de un reconocimiento nacional o regional, una alianza estratégica o un proyecto
+                            de impacto amplio que marcó la trayectoria de AMMUCALE.]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">202X</div>
+                    <div class="timeline-content">
+                        <h4>[Proyectos recientes]</h4>
+                        <p>[Descripción de los proyectos más recientes, logros en los últimos años y la situación actual
+                            de la asociación. ¿Cuántas mujeres participan hoy? ¿Cuáles son los proyectos activos?]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>24 años sembrando vida</h4>
+                        <p>[Celebración del aniversario: balance de lo logrado, mujeres beneficiadas, hectáreas
+                            trabajadas, familias impactadas u otros indicadores de impacto que AMMUCALE quiera
+                            destacar.]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMAS -->
+    <section id="programas">
+        <div class="container">
+            <p class="section-eyebrow">Programas</p>
+            <h2 class="section-title">Nuestras líneas de trabajo</h2>
+            <p class="section-body" style="margin-bottom:0">
+                [Descripción general de las áreas o programas en que AMMUCALE trabaja. Puedes ajustar el número de
+                tarjetas según los programas reales de la fundación.]
+            </p>
+            <div class="programas-grid">
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 2c1.6 0 3.1.5 4.3 1.3L4.3 16.3C3.5 15.1 3 13.6 3 12c0-5 4-9 9-9zm0 16c-1.6 0-3.1-.5-4.3-1.3l12-12c.8 1.2 1.3 2.7 1.3 4.3 0 5-4 9-9 9z" />
+                        </svg>
+                    </div>
+                    <h3>Producción agroecológica</h3>
+                    <p>[Descripción del programa de producción: huertas, cultivos, prácticas agroecológicas, semillas
+                        nativas u otros procesos productivos que impulsa AMMUCALE.]</p>
+                </div>
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3>Formación y capacitación</h3>
+                    <p>[Descripción de los talleres, escuelas de liderazgo, intercambios de saberes o programas de
+                        educación que ofrece la asociación a sus integrantes y comunidades.]</p>
+                </div>
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                    </div>
+                    <h3>Salud y bienestar</h3>
+                    <p>[Descripción de programas de salud integral, medicina tradicional, atención psicosocial,
+                        nutrición u otros procesos relacionados con el bienestar de las mujeres asociadas.]</p>
+                </div>
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <h3>Comercialización solidaria</h3>
+                    <p>[Descripción de mercados campesinos, ferias, redes de distribución o estrategias de
+                        comercialización de los productos agroecológicos de las asociadas.]</p>
+                </div>
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Liderazgo comunitario</h3>
+                    <p>[Descripción de procesos de fortalecimiento organizativo, participación en espacios locales,
+                        formación de lideresas o articulación con otras organizaciones campesinas.]</p>
+                </div>
+                <div class="programa-card">
+                    <div class="programa-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                    </div>
+                    <h3>Gestión del territorio</h3>
+                    <p>[Descripción de proyectos relacionados con el cuidado ambiental, conservación de fuentes de agua,
+                        manejo de suelos, cambio climático u otras acciones de gestión territorial.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <div class="container">
+            <div class="galeria-intro">
+                <p class="section-eyebrow">Galería</p>
+                <h2 class="section-title">El trabajo en imágenes</h2>
+                <p class="section-body">[Agrega aquí las fotografías reales de las actividades, productos, eventos y
+                    mujeres de AMMUCALE. Cada espacio de abajo es un lugar para una imagen.]</p>
+            </div>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="img1.jpg" alt="Imagen principal" class="galeria-img">
+                </div>
+                <div class="galeria-item">
+                    <img src="img2.jpg" alt="Imagen 2" class="galeria-img">
+                </div>
+                <div class="galeria-item">
+                    <img src="img3.jpg" alt="Imagen 3" class="galeria-img">
+                </div>
+                <div class="galeria-item">
+                    <img src="img4.jpg" alt="Imagen 4" class="galeria-img">
+                </div>
+                <div class="galeria-item">
+                    <img src="img5.jpg" alt="Imagen 5" class="galeria-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <p class="section-eyebrow">Contacto</p>
+            <h2 class="section-title">Escríbenos</h2>
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <p>[Texto de invitación: Puedes invitar a aliados, voluntarios, instituciones o familias campesinas
+                        a ponerse en contacto con AMMUCALE para conocer más sobre los programas, hacer parte de la red o
+                        apoyar el trabajo de la asociación.]</p>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div class="contacto-dato-text">
+                            <p>Ubicación</p>
+                            <p>Lebrija, Santander, Colombia</p>
+                        </div>
+                    </div>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div class="contacto-dato-text">
+                            <p>Teléfono</p>
+                            <p>3180161510</p>
+                        </div>
+                    </div>
+                    <div class="contacto-dato">
+                        <div class="contacto-dato-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div class="contacto-dato-text">
+                            <p>Correo electrónico</p>
+                            <p>asociacionammucale@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form class="contacto-form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label>Nombre completo</label>
+                            <input type="text" placeholder="Tu nombre" />
+                        </div>
+                        <div class="form-group">
+                            <label>Correo electrónico</label>
+                            <input type="email" placeholder="tu@correo.com" />
+                        </div>
+                        <div class="form-group">
+                            <label>Asunto</label>
+                            <input type="text" placeholder="¿En qué podemos ayudarte?" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje</label>
+                            <textarea placeholder="Cuéntanos..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <p class="footer-logo">AMMUCALE</p>
+                <p class="footer-tagline">24 años sembrando vida · Lebrija, Santander</p>
+            </div>
+            <p class="footer-copy">© 2026 AMMUCALE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
