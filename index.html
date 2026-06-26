@@ -234,7 +234,7 @@
 
         /* ── SECCIONES GENERALES ── */
         section {
-            padding: 7rem 0;
+            padding: 5rem 0;
         }
 
         .container {
@@ -443,70 +443,92 @@
             line-height: 1.7;
         }
 
-        /* ── TRAYECTORIA ── */
-        #trayectoria {
+        /* ── PILARES ── */
+        #pilares {
             background: var(--crema);
         }
 
-        .timeline {
-            margin-top: 4rem;
-            position: relative;
+        #pilares .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 130px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: var(--verde-claro);
-            opacity: 0.4;
+        #pilares .section-header .section-eyebrow {
+            display: block;
         }
 
-        .timeline-item {
+        #pilares .section-header .section-title {
+            margin-bottom: 0;
+        }
+
+        .pilares-grid {
             display: grid;
-            grid-template-columns: 130px 1fr;
-            gap: 2rem;
-            padding: 0 0 3.5rem;
-            position: relative;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
-        .timeline-year {
+        .pilar-card {
+            background: var(--blanco);
+            overflow: hidden;
+            border: 1px solid var(--crema-oscuro);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pilar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(45, 79, 42, 0.12);
+        }
+
+        .pilar-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .pilar-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .pilar-card:hover .pilar-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .pilar-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .pilar-emoji {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .pilar-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .pilar-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--tierra);
-            text-align: right;
-            padding-top: 0.25rem;
-            position: relative;
-        }
-
-        .timeline-year::after {
-            content: '';
-            position: absolute;
-            right: -2.5rem;
-            top: 0.6rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--verde-claro);
-            border: 2px solid var(--crema);
-            box-shadow: 0 0 0 1px var(--verde-claro);
-        }
-
-        .timeline-content h4 {
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-size: 1.1rem;
             color: var(--verde-oscuro);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
-        .timeline-content p {
-            font-size: 0.9rem;
+        .pilar-desc {
+            font-size: 0.85rem;
             color: var(--texto-medio);
-            line-height: 1.75;
+            line-height: 1.7;
         }
 
         /* ── PROGRAMAS ── */
@@ -639,6 +661,13 @@
             font-size: 1.2rem;
         }
 
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* ── CONTACTO ── */
         #contacto {
             background: var(--verde-oscuro);
@@ -703,6 +732,60 @@
             font-size: 0.95rem;
         }
 
+        .contacto-dato-text a {
+            color: var(--crema);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .contacto-dato-text a:hover {
+            color: var(--verde-claro);
+        }
+
+        /* Redes sociales */
+        .redes-sociales {
+            margin-top: 2rem;
+        }
+
+        .redes-titulo {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--verde-claro);
+            margin-bottom: 1rem;
+        }
+
+        .redes-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .red-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(125, 176, 102, 0.3);
+            color: var(--crema);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .red-link:hover {
+            border-color: var(--verde-claro);
+            background: rgba(125, 176, 102, 0.08);
+        }
+
+        .red-link svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--verde-claro);
+            flex-shrink: 0;
+        }
+
+        /* Form */
         .contacto-form {
             display: flex;
             flex-direction: column;
@@ -734,6 +817,11 @@
             transition: border-color 0.2s;
         }
 
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(245, 240, 232, 0.35);
+        }
+
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: rgba(125, 176, 102, 0.6);
@@ -757,11 +845,41 @@
             text-transform: uppercase;
             align-self: flex-start;
             transition: background 0.2s;
+            position: relative;
         }
 
-        .form-submit:hover {
+        .form-submit:hover:not(:disabled) {
             background: var(--tierra-claro);
             color: var(--texto);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Notificación del formulario */
+        .form-notice {
+            padding: 0.85rem 1rem;
+            font-size: 0.88rem;
+            border-left: 3px solid;
+            display: none;
+        }
+
+        .form-notice.success {
+            background: rgba(125, 176, 102, 0.12);
+            border-color: var(--verde-claro);
+            color: var(--verde-claro);
+        }
+
+        .form-notice.error {
+            background: rgba(181, 52, 26, 0.1);
+            border-color: var(--acento-rojo);
+            color: #e06050;
+        }
+
+        .form-notice.visible {
+            display: block;
         }
 
         /* ── FOOTER ── */
@@ -833,27 +951,23 @@
                 grid-row: auto;
             }
 
-            .timeline::before {
-                left: 80px;
-            }
-
-            .timeline-item {
-                grid-template-columns: 80px 1fr;
-            }
-
-            .timeline-year::after {
-                right: -2rem;
-            }
-
             nav ul {
                 display: none;
             }
+
+            .pilares-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .redes-links {
+                flex-direction: column;
+            }
         }
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+
+        @media (max-width: 580px) {
+            .pilares-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -863,15 +977,14 @@
     <!-- NAV -->
     <nav>
         <a href="#inicio" class="nav-logo">
-            <!-- Reemplaza src con la ruta real del logo -->
             <img src="icononav2.png" alt="Logo AMMUCALE" onerror="this.style.display='none'" />
             <span>AMMUCALE</span>
         </a>
         <ul>
             <li><a href="#quienes">Quiénes somos</a></li>
-            <li><a href="#vision">Visión</a></li>
+            <li><a href="#vision">Misión y Visión</a></li>
             <li><a href="#objetivos">Objetivos</a></li>
-            <li><a href="#trayectoria">Trayectoria</a></li>
+            <li><a href="#pilares">Pilares</a></li>
             <li><a href="#programas">Programas</a></li>
             <li><a href="#galeria">Galería</a></li>
             <li><a href="#contacto">Contacto</a></li>
@@ -881,27 +994,25 @@
     <!-- HERO -->
     <section id="inicio">
         <div class="hero-content">
-            <p class="hero-eyebrow">Asociación de Mujeres Campesinas de Lebrija</p>
+            <p class="hero-eyebrow">Asociación Municipal de Mujeres Campesinas de Lebrija</p>
             <h1 class="hero-title">
                 Sembrando <em>vida</em><br />en la tierra<br />y en las mujeres
             </h1>
             <p class="hero-subtitle">
-                Desde 2000, AMMUCALE fortalece los procesos productivos agroecológicos y mejora la calidad de vida de la
-                mujer rural en la región de Lebrija, Santander.
+                Desde 1996 transformamos el territorio a través del trabajo, la tradición, la gastronomía y el liderazgo de las mujeres rurales. Mujeres campesinas que cultivan vida, preservan la cultura y construyen el futuro de Lebrija.
             </p>
             <a href="#quienes" class="hero-cta">Conoce nuestra historia</a>
         </div>
         <div class="hero-visual">
             <div class="hero-circle">
-                <!-- Logo central del hero – reemplaza src con imagen real -->
                 <img class="hero-circle-img" src="ammucale logo2.png" alt="Ilustración AMMUCALE"
                     onerror="this.style.background='#4A7A3D'; this.style.opacity='0.6'" />
                 <div class="hero-stat hero-stat--top">
-                    <span class="hero-stat-num">+24</span>
+                    <span class="hero-stat-num">+30</span>
                     <span class="hero-stat-label">Años de experiencia</span>
                 </div>
                 <div class="hero-stat hero-stat--bottom">
-                    <span class="hero-stat-num">[N]</span>
+                    <span class="hero-stat-num">+100</span>
                     <span class="hero-stat-label">Mujeres beneficiadas</span>
                 </div>
             </div>
@@ -913,7 +1024,6 @@
         <div class="container">
             <div class="quienes-grid">
                 <div class="quienes-img-wrap">
-                    <!-- Reemplaza con imagen real de la fundación -->
                     <div class="quienes-img-placeholder">
                         <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="60" cy="40" r="28" stroke="white" stroke-width="1.5" />
@@ -931,20 +1041,15 @@
                     <p class="section-eyebrow">Quiénes somos</p>
                     <h2 class="section-title">Una asociación arraigada en la tierra y en la comunidad</h2>
                     <p class="section-body">
-                        La Asociación de Mujeres Campesinas de Lebrija —AMMUCALE— lleva más de 24 años adelantando
-                        procesos de mejoramiento de la calidad de vida de la mujer rural, fortaleciendo los procesos
-                        productivos agroecológicos sustentables en la región.
+                        La Asociación Municipal de Mujeres Campesinas de Lebrija (AMMUCALE) nació el <strong>11 de marzo de 1996</strong> como una iniciativa de mujeres rurales comprometidas con el bienestar de sus familias, la defensa de sus derechos y el fortalecimiento del campo lebrijense.
                     </p>
                     <br />
                     <p class="section-body">
-                        [Aquí puedes agregar más información sobre los orígenes de la asociación, quiénes la fundaron,
-                        cuántas mujeres la integran hoy y cuál es su área de impacto geográfico en el municipio de
-                        Lebrija y alrededores.]
+                        Desde entonces, la asociación ha trabajado de manera colectiva para generar <strong>oportunidades económicas</strong>, conservar las <strong>tradiciones campesinas</strong> y promover el <strong>liderazgo femenino</strong>, convirtiéndose en un referente del desarrollo rural en Santander.
                     </p>
                     <br />
                     <p class="section-body">
-                        [Párrafo adicional sobre los valores fundamentales que guían el trabajo de AMMUCALE:
-                        solidaridad, autonomía, soberanía alimentaria, cuidado del medio ambiente, entre otros.]
+                        Hoy, <strong>AMMUCALE</strong> reúne a mujeres que cultivan la tierra, transforman alimentos, conservan recetas tradicionales, impulsan emprendimientos rurales y transmiten conocimientos ancestrales a las nuevas generaciones, demostrando que el campo es sinónimo de <strong>riqueza cultural, ambiental y humana</strong>.
                     </p>
                 </div>
             </div>
@@ -966,9 +1071,7 @@
                             stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                     <h3>Visión</h3>
-                    <p>[Texto de la visión: Describe el futuro que AMMUCALE aspira a construir para las mujeres rurales
-                        de Lebrija y la región. ¿Cómo se imagina la asociación el territorio y la vida de las mujeres
-                        campesinas en los próximos años?]</p>
+                    <p>Ser una organización reconocida a nivel regional y nacional por el liderazgo de las mujeres campesinas, la preservación de los saberes ancestrales, la innovación en el desarrollo rural, la promoción de la economía solidaria y la protección del patrimonio natural y cultural de Lebrija.</p>
                 </div>
                 <div class="vision-card">
                     <svg class="vision-card-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -978,9 +1081,7 @@
                         <path d="M16 40H28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                     <h3>Misión</h3>
-                    <p>[Texto de la misión: ¿Qué hace AMMUCALE cada día? Describe el propósito central de la asociación,
-                        las acciones concretas que realiza y a quiénes sirve. Por ejemplo: fortalecer capacidades,
-                        promover la soberanía alimentaria, generar ingresos, etc.]</p>
+                    <p>Promover el desarrollo integral de las mujeres campesinas de Lebrija mediante el fortalecimiento de sus capacidades, el liderazgo comunitario, la producción agropecuaria, la transformación de alimentos, la economía solidaria y la conservación del patrimonio cultural y ambiental, contribuyendo al bienestar de las familias rurales y al desarrollo sostenible del territorio.</p>
                 </div>
             </div>
         </div>
@@ -994,110 +1095,141 @@
                     <p class="section-eyebrow">Objetivos</p>
                     <h2 class="section-title">Lo que nos proponemos cada día</h2>
                 </div>
-                <div>
-                    <p class="section-body" style="padding-top: 0.75rem;">
-                        [Texto introductorio sobre los objetivos generales de AMMUCALE: ¿qué busca lograr la asociación
-                        a corto, mediano y largo plazo? ¿Cuáles son las áreas de trabajo prioritarias?]
-                    </p>
-                </div>
             </div>
             <div class="objetivos-lista">
                 <div class="objetivo-item">
                     <span class="objetivo-num">01</span>
-                    <h4>Soberanía alimentaria</h4>
-                    <p>[Descripción del objetivo relacionado con la producción agroecológica, huertas, semillas nativas
-                        o sistemas productivos sostenibles.]</p>
+                    <h4>Desarrollo Rural</h4>
+                    <p>Impulsar proyectos que mejoren la calidad de vida de las mujeres campesinas y sus familias.</p>
                 </div>
                 <div class="objetivo-item">
                     <span class="objetivo-num">02</span>
-                    <h4>Fortalecimiento organizativo</h4>
-                    <p>[Descripción del objetivo de fortalecer la estructura interna, el liderazgo de las mujeres y la
-                        participación comunitaria.]</p>
+                    <h4>Liderazgo Femenino</h4>
+                    <p>Fortalecer el liderazgo, la participación ciudadana y el empoderamiento económico de las mujeres rurales.</p>
                 </div>
                 <div class="objetivo-item">
                     <span class="objetivo-num">03</span>
-                    <h4>Generación de ingresos</h4>
-                    <p>[Descripción de los objetivos económicos: comercialización, emprendimientos, mercados
-                        agroecológicos u otras estrategias productivas.]</p>
+                    <h4>Producción Sostenible</h4>
+                    <p>Promover prácticas agrícolas responsables que respeten la naturaleza y fortalezcan la seguridad alimentaria.</p>
                 </div>
                 <div class="objetivo-item">
                     <span class="objetivo-num">04</span>
-                    <h4>Bienestar y salud</h4>
-                    <p>[Descripción del objetivo relacionado con la salud integral de las mujeres: medicina tradicional,
-                        nutrición, salud mental u otros aspectos del bienestar.]</p>
+                    <h4>Patrimonio Cultural</h4>
+                    <p>Rescatar las tradiciones, recetas, costumbres y conocimientos ancestrales propios del campo lebrijense.</p>
                 </div>
                 <div class="objetivo-item">
                     <span class="objetivo-num">05</span>
-                    <h4>Educación y capacitación</h4>
-                    <p>[Descripción de los programas de formación, talleres, intercambio de saberes o educación
-                        ambiental que ofrece la asociación.]</p>
+                    <h4>Economía Solidaria</h4>
+                    <p>Generar oportunidades de comercialización para los productos cultivados y transformados por las asociadas.</p>
                 </div>
                 <div class="objetivo-item">
                     <span class="objetivo-num">06</span>
-                    <h4>Incidencia y derechos</h4>
-                    <p>[Descripción del trabajo de incidencia política, defensa de derechos de las mujeres rurales o
-                        articulación con redes y organizaciones afines.]</p>
+                    <h4>Conservación Ambiental</h4>
+                    <p>Proteger los recursos naturales mediante prácticas sostenibles y educación ambiental.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TRAYECTORIA -->
-    <section id="trayectoria">
+    <!-- PILARES -->
+    <section id="pilares">
         <div class="container">
-            <p class="section-eyebrow">Historia</p>
-            <h2 class="section-title">24 años de siembra y cosecha</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2000</div>
-                    <div class="timeline-content">
-                        <h4>Fundación de AMMUCALE</h4>
-                        <p>[Descripción de cómo nació la asociación: cuántas mujeres la fundaron, en qué contexto, cuál
-                            fue la motivación inicial y quiénes fueron las primeras lideresas.]</p>
+            <div class="section-header">
+                <p class="section-eyebrow">Fundamentos</p>
+                <h2 class="section-title">Nuestros pilares</h2>
+            </div>
+            <div class="pilares-grid">
+
+                <!-- Pilar 1 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="cultivo.jpeg" alt="Agricultura sostenible"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #3a6b2e 0%, #2D4F2A 100%); display:none;">
+                            <span class="pilar-emoji">🌱</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Agricultura Sostenible</h3>
+                        <p class="pilar-desc">Cultivamos la tierra con responsabilidad, aplicando prácticas que respetan los ciclos naturales y garantizan la productividad para las generaciones futuras.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">200X</div>
-                    <div class="timeline-content">
-                        <h4>[Hito importante]</h4>
-                        <p>[Descripción de un logro, proyecto o evento significativo en los primeros años de la
-                            asociación. Puede ser la apertura de un espacio, un primer convenio, una certificación,
-                            etc.]</p>
+
+                <!-- Pilar 2 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="lideres.jpg" alt="Mujeres líderes"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #7a4a8a 0%, #5a2e6a 100%); display:none;">
+                            <span class="pilar-emoji">👩</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Mujeres Líderes</h3>
+                        <p class="pilar-desc">Fortalecemos el empoderamiento femenino, la participación ciudadana y el liderazgo comunitario de las mujeres rurales de Lebrija.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">201X</div>
-                    <div class="timeline-content">
-                        <h4>[Hito de crecimiento]</h4>
-                        <p>[Descripción de un período de expansión o consolidación: nuevos programas, alianzas,
-                            reconocimientos o ampliación del número de asociadas.]</p>
+
+                <!-- Pilar 3 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="cultivo.jpg" alt="Productos campesinos"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #c8783a 0%, #8B5E3C 100%); display:none;">
+                            <span class="pilar-emoji">🍊</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Productos Campesinos</h3>
+                        <p class="pilar-desc">Transformamos los frutos del campo en productos con valor agregado, impulsando la economía familiar y la comercialización justa de nuestras cosechas.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">201X</div>
-                    <div class="timeline-content">
-                        <h4>[Reconocimiento o alianza clave]</h4>
-                        <p>[Descripción de un reconocimiento nacional o regional, una alianza estratégica o un proyecto
-                            de impacto amplio que marcó la trayectoria de AMMUCALE.]</p>
+
+                <!-- Pilar 4 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="comida.jpg" alt="Gastronomía tradicional"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #b54a1a 0%, #8a3010 100%); display:none;">
+                            <span class="pilar-emoji">🍲</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Gastronomía Tradicional</h3>
+                        <p class="pilar-desc">Preservamos las recetas y sabores que han pasado de mano en mano por generaciones, honrando la identidad culinaria del campo lebrijense.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">202X</div>
-                    <div class="timeline-content">
-                        <h4>[Proyectos recientes]</h4>
-                        <p>[Descripción de los proyectos más recientes, logros en los últimos años y la situación actual
-                            de la asociación. ¿Cuántas mujeres participan hoy? ¿Cuáles son los proyectos activos?]</p>
+
+                <!-- Pilar 5 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="ancestral.jpg" alt="Conservación ambiental"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #4A7A3D 0%, #2a5a2a 100%); display:none;">
+                            <span class="pilar-emoji">🌿</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Conservación Ambiental</h3>
+                        <p class="pilar-desc">Protegemos los recursos naturales de nuestro territorio a través de la educación ambiental y prácticas de producción en armonía con el ecosistema.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-content">
-                        <h4>24 años sembrando vida</h4>
-                        <p>[Celebración del aniversario: balance de lo logrado, mujeres beneficiadas, hectáreas
-                            trabajadas, familias impactadas u otros indicadores de impacto que AMMUCALE quiera
-                            destacar.]</p>
+
+                <!-- Pilar 6 -->
+                <div class="pilar-card">
+                    <div class="pilar-img-wrap">
+                        <img src="ances.png" alt="Patrimonio cultural"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="pilar-img-placeholder" style="background: linear-gradient(135deg, #9a7a3a 0%, #6a5020 100%); display:none;">
+                            <span class="pilar-emoji">🏡</span>
+                        </div>
+                    </div>
+                    <div class="pilar-body">
+                        <h3 class="pilar-title">Patrimonio Cultural</h3>
+                        <p class="pilar-desc">Rescatamos y transmitimos los saberes ancestrales, costumbres y tradiciones campesinas que dan identidad y alma al territorio de Lebrija.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1107,10 +1239,6 @@
         <div class="container">
             <p class="section-eyebrow">Programas</p>
             <h2 class="section-title">Nuestras líneas de trabajo</h2>
-            <p class="section-body" style="margin-bottom:0">
-                [Descripción general de las áreas o programas en que AMMUCALE trabaja. Puedes ajustar el número de
-                tarjetas según los programas reales de la fundación.]
-            </p>
             <div class="programas-grid">
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1119,9 +1247,8 @@
                                 d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 2c1.6 0 3.1.5 4.3 1.3L4.3 16.3C3.5 15.1 3 13.6 3 12c0-5 4-9 9-9zm0 16c-1.6 0-3.1-.5-4.3-1.3l12-12c.8 1.2 1.3 2.7 1.3 4.3 0 5-4 9-9 9z" />
                         </svg>
                     </div>
-                    <h3>Producción agroecológica</h3>
-                    <p>[Descripción del programa de producción: huertas, cultivos, prácticas agroecológicas, semillas
-                        nativas u otros procesos productivos que impulsa AMMUCALE.]</p>
+                    <h3>Agricultura Familiar</h3>
+                    <p>Cultivamos frutas, hortalizas y productos agrícolas mediante prácticas responsables con el medio ambiente.</p>
                 </div>
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1129,9 +1256,8 @@
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
-                    <h3>Formación y capacitación</h3>
-                    <p>[Descripción de los talleres, escuelas de liderazgo, intercambios de saberes o programas de
-                        educación que ofrece la asociación a sus integrantes y comunidades.]</p>
+                    <h3>Gastronomía Tradicional</h3>
+                    <p>Rescatamos la cocina típica campesina elaborando alimentos con recetas transmitidas por generaciones.</p>
                 </div>
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1140,9 +1266,8 @@
                                 d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
                     </div>
-                    <h3>Salud y bienestar</h3>
-                    <p>[Descripción de programas de salud integral, medicina tradicional, atención psicosocial,
-                        nutrición u otros procesos relacionados con el bienestar de las mujeres asociadas.]</p>
+                    <h3>Transformación de Alimentos</h3>
+                    <p>Convertimos los productos del campo en alimentos con valor agregado que fortalecen la economía familiar.</p>
                 </div>
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1152,9 +1277,8 @@
                             <line x1="12" y1="16" x2="12.01" y2="16" />
                         </svg>
                     </div>
-                    <h3>Comercialización solidaria</h3>
-                    <p>[Descripción de mercados campesinos, ferias, redes de distribución o estrategias de
-                        comercialización de los productos agroecológicos de las asociadas.]</p>
+                    <h3>Huertas Caseras</h3>
+                    <p>Promovemos la seguridad alimentaria mediante huertas familiares que abastecen los hogares rurales.</p>
                 </div>
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1165,9 +1289,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                     </div>
-                    <h3>Liderazgo comunitario</h3>
-                    <p>[Descripción de procesos de fortalecimiento organizativo, participación en espacios locales,
-                        formación de lideresas o articulación con otras organizaciones campesinas.]</p>
+                    <h3>Conocimiento Ancestral</h3>
+                    <p>Preservamos los saberes tradicionales relacionados con la agricultura, la alimentación, las plantas medicinales y las costumbres campesinas.</p>
                 </div>
                 <div class="programa-card">
                     <div class="programa-icon">
@@ -1176,9 +1299,8 @@
                             <polyline points="9 22 9 12 15 12 15 22" />
                         </svg>
                     </div>
-                    <h3>Gestión del territorio</h3>
-                    <p>[Descripción de proyectos relacionados con el cuidado ambiental, conservación de fuentes de agua,
-                        manejo de suelos, cambio climático u otras acciones de gestión territorial.]</p>
+                    <h3>Turismo Rural</h3>
+                    <p>Creamos experiencias donde visitantes pueden conocer la cultura campesina, disfrutar de la gastronomía local y vivir el campo desde una perspectiva auténtica.</p>
                 </div>
             </div>
         </div>
@@ -1190,8 +1312,6 @@
             <div class="galeria-intro">
                 <p class="section-eyebrow">Galería</p>
                 <h2 class="section-title">El trabajo en imágenes</h2>
-                <p class="section-body">[Agrega aquí las fotografías reales de las actividades, productos, eventos y
-                    mujeres de AMMUCALE. Cada espacio de abajo es un lugar para una imagen.]</p>
             </div>
             <div class="galeria-grid">
                 <div class="galeria-item">
@@ -1220,9 +1340,8 @@
             <h2 class="section-title">Escríbenos</h2>
             <div class="contacto-grid">
                 <div class="contacto-info">
-                    <p>[Texto de invitación: Puedes invitar a aliados, voluntarios, instituciones o familias campesinas
-                        a ponerse en contacto con AMMUCALE para conocer más sobre los programas, hacer parte de la red o
-                        apoyar el trabajo de la asociación.]</p>
+                    <p>¿Quieres conocer más sobre nuestros programas, hacer parte de la red o apoyar el trabajo de las mujeres campesinas de Lebrija? Escríbenos, con gusto te contamos todo.</p>
+
                     <div class="contacto-dato">
                         <div class="contacto-dato-icon">
                             <svg viewBox="0 0 24 24">
@@ -1235,6 +1354,7 @@
                             <p>Lebrija, Santander, Colombia</p>
                         </div>
                     </div>
+
                     <div class="contacto-dato">
                         <div class="contacto-dato-icon">
                             <svg viewBox="0 0 24 24">
@@ -1244,9 +1364,10 @@
                         </div>
                         <div class="contacto-dato-text">
                             <p>Teléfono</p>
-                            <p>3180161510</p>
+                            <p><a href="tel:+573180161510">3180161510</a></p>
                         </div>
                     </div>
+
                     <div class="contacto-dato">
                         <div class="contacto-dato-icon">
                             <svg viewBox="0 0 24 24">
@@ -1256,29 +1377,53 @@
                         </div>
                         <div class="contacto-dato-text">
                             <p>Correo electrónico</p>
-                            <p>asociacionammucale@gmail.com</p>
+                            <p><a href="mailto:asociacionammucale@gmail.com">asociacionammucale@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Redes sociales -->
+                    <div class="redes-sociales">
+                        <p class="redes-titulo">Síguenos en redes</p>
+                        <div class="redes-links">
+                            <a href="https://www.instagram.com/ammucale" target="_blank" rel="noopener noreferrer" class="red-link">
+                                <!-- Instagram icon -->
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="https://www.facebook.com/ammucale" target="_blank" rel="noopener noreferrer" class="red-link">
+                                <!-- Facebook icon -->
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                Facebook
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- FORMULARIO -->
                 <div>
-                    <form class="contacto-form" onsubmit="return false;">
+                    <form class="contacto-form" id="contactoForm" onsubmit="return false;">
                         <div class="form-group">
-                            <label>Nombre completo</label>
-                            <input type="text" placeholder="Tu nombre" />
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
                         </div>
                         <div class="form-group">
-                            <label>Correo electrónico</label>
-                            <input type="email" placeholder="tu@correo.com" />
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
                         </div>
                         <div class="form-group">
-                            <label>Asunto</label>
-                            <input type="text" placeholder="¿En qué podemos ayudarte?" />
+                            <label for="asunto">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?" required />
                         </div>
                         <div class="form-group">
-                            <label>Mensaje</label>
-                            <textarea placeholder="Cuéntanos..."></textarea>
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos..." required></textarea>
                         </div>
-                        <button type="submit" class="form-submit">Enviar mensaje</button>
+                        <div class="form-notice" id="formNotice"></div>
+                        <button type="button" class="form-submit" id="btnEnviar" onclick="enviarMensaje()">Enviar mensaje</button>
                     </form>
                 </div>
             </div>
@@ -1290,12 +1435,95 @@
         <div class="footer-inner">
             <div>
                 <p class="footer-logo">AMMUCALE</p>
-                <p class="footer-tagline">24 años sembrando vida · Lebrija, Santander</p>
+                <p class="footer-tagline">30 años sembrando vida · Lebrija, Santander</p>
             </div>
             <p class="footer-copy">© 2026 AMMUCALE. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-</body>
+    <!-- LÓGICA DEL FORMULARIO -->
+    <script>
+        function enviarMensaje() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const asunto = document.getElementById('asunto').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+            const notice = document.getElementById('formNotice');
+            const btn = document.getElementById('btnEnviar');
 
+            // Validación básica
+            if (!nombre || !email || !asunto || !mensaje) {
+                mostrarNotice('Por favor completa todos los campos antes de enviar.', 'error');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                mostrarNotice('Por favor ingresa un correo electrónico válido.', 'error');
+                return;
+            }
+
+            // Construir el mailto con los datos del formulario
+            const destinatario = 'asociacionammucale@gmail.com';
+            const asuntoEncoded = encodeURIComponent('[Web AMMUCALE] ' + asunto);
+            const cuerpo = encodeURIComponent(
+                'Nombre: ' + nombre + '\n' +
+                'Correo: ' + email + '\n\n' +
+                'Mensaje:\n' + mensaje + '\n\n' +
+                '---\nEnviado desde el sitio web de AMMUCALE'
+            );
+
+            const mailtoLink = 'mailto:' + destinatario +
+                '?subject=' + asuntoEncoded +
+                '&body=' + cuerpo;
+
+            // Abrir el cliente de correo del usuario
+            const ventana = window.open(mailtoLink, '_blank');
+
+            // Si el navegador bloquea la ventana, usar location
+            if (!ventana || ventana.closed || typeof ventana.closed === 'undefined') {
+                window.location.href = mailtoLink;
+            }
+
+            // Retroalimentación visual
+            btn.disabled = true;
+            btn.textContent = 'Mensaje listo ✓';
+
+            mostrarNotice(
+                '¡Gracias, ' + nombre + '! Se abrió tu cliente de correo con el mensaje listo para enviar a asociacionammucale@gmail.com. Si no se abrió automáticamente, escríbenos directamente a ese correo.',
+                'success'
+            );
+
+            // Restaurar botón después de 6 segundos
+            setTimeout(function () {
+                btn.disabled = false;
+                btn.textContent = 'Enviar mensaje';
+            }, 6000);
+        }
+
+        function mostrarNotice(texto, tipo) {
+            const notice = document.getElementById('formNotice');
+            notice.textContent = texto;
+            notice.className = 'form-notice ' + tipo + ' visible';
+
+            // Auto-ocultar errores leves después de 5s
+            if (tipo === 'error') {
+                setTimeout(function () {
+                    notice.classList.remove('visible');
+                }, 5000);
+            }
+        }
+
+        // Limpiar notice al escribir en los campos
+        ['nombre', 'email', 'asunto', 'mensaje'].forEach(function (id) {
+            document.getElementById(id).addEventListener('input', function () {
+                const notice = document.getElementById('formNotice');
+                if (notice.classList.contains('error')) {
+                    notice.classList.remove('visible');
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>
