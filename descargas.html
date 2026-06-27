@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMMUCALE — Documentos</title>
+    <!-- Evita que los buscadores indexen esta página -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        :root {
+            --verde-oscuro: #2D4F2A;
+            --verde-medio: #4A7A3D;
+            --verde-claro: #7DB066;
+            --tierra: #8B5E3C;
+            --tierra-claro: #C89468;
+            --crema: #F5F0E8;
+            --crema-oscuro: #EAE2D0;
+            --blanco: #FEFDF9;
+            --texto: #1E2E1C;
+            --texto-medio: #4A5E45;
+        }
+ 
+        html { scroll-behavior: smooth; }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--verde-oscuro);
+            color: var(--crema);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        /* ── HEADER ── */
+        header {
+            padding: 2.5rem 2rem 2rem;
+            border-bottom: 1px solid rgba(125, 176, 102, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+ 
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+ 
+        .logo-link img {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+ 
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--crema);
+            letter-spacing: 0.02em;
+        }
+ 
+        .header-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(125, 176, 102, 0.35);
+            margin: 0 0.5rem;
+        }
+ 
+        .header-badge {
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--tierra-claro);
+            font-weight: 500;
+            border: 1px solid rgba(200, 148, 104, 0.4);
+            padding: 0.25rem 0.75rem;
+        }
+ 
+        /* ── MAIN ── */
+        main {
+            flex: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+            width: 100%;
+        }
+ 
+        .page-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--verde-claro);
+            margin-bottom: 1rem;
+        }
+ 
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            color: var(--crema);
+            margin-bottom: 1rem;
+        }
+ 
+        .page-desc {
+            font-size: 0.95rem;
+            color: rgba(245, 240, 232, 0.65);
+            line-height: 1.8;
+            max-width: 540px;
+            margin-bottom: 3.5rem;
+        }
+ 
+        /* ── SECCIÓN ── */
+        .doc-section {
+            margin-bottom: 3rem;
+        }
+ 
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--tierra-claro);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(125, 176, 102, 0.15);
+        }
+ 
+        /* ── LISTA DE ARCHIVOS ── */
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+ 
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid rgba(125, 176, 102, 0.18);
+            border-bottom: none;
+            transition: background 0.2s;
+            gap: 1.5rem;
+        }
+ 
+        .file-item:first-child {
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+ 
+        .file-item:last-child {
+            border-bottom: 1px solid rgba(125, 176, 102, 0.18);
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+ 
+        .file-item:hover {
+            background: rgba(125, 176, 102, 0.07);
+        }
+ 
+        .file-main {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0;
+        }
+ 
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(125, 176, 102, 0.3);
+        }
+ 
+        .file-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--verde-claro);
+            fill: none;
+            stroke-width: 1.5;
+        }
+ 
+        /* Colores por tipo */
+        .file-icon.pdf   { border-color: rgba(181, 52, 26, 0.4); }
+        .file-icon.pdf svg { stroke: #e06050; }
+        .file-icon.img   { border-color: rgba(125, 176, 102, 0.4); }
+        .file-icon.img svg { stroke: var(--verde-claro); }
+        .file-icon.doc   { border-color: rgba(74, 122, 61, 0.5); }
+        .file-icon.doc svg { stroke: #90c878; }
+        .file-icon.xls   { border-color: rgba(50, 130, 80, 0.5); }
+        .file-icon.xls svg { stroke: #60c888; }
+        .file-icon.zip   { border-color: rgba(200, 148, 104, 0.4); }
+        .file-icon.zip svg { stroke: var(--tierra-claro); }
+ 
+        .file-info {
+            min-width: 0;
+        }
+ 
+        .file-name {
+            font-size: 0.92rem;
+            color: var(--crema);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.2rem;
+        }
+ 
+        .file-meta {
+            font-size: 0.75rem;
+            color: rgba(245, 240, 232, 0.45);
+            letter-spacing: 0.03em;
+        }
+ 
+        /* ── BOTÓN DESCARGAR ── */
+        .file-download {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            background: transparent;
+            border: 1px solid var(--tierra);
+            color: var(--tierra-claro);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+            cursor: pointer;
+        }
+ 
+        .file-download:hover {
+            background: var(--tierra);
+            color: var(--crema);
+            border-color: var(--tierra);
+        }
+ 
+        .file-download svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+ 
+        /* ── PLACEHOLDER (cuando no hay archivo real) ── */
+        .file-download.placeholder {
+            border-color: rgba(125, 176, 102, 0.2);
+            color: rgba(245, 240, 232, 0.3);
+            cursor: default;
+            pointer-events: none;
+        }
+ 
+        /* ── ZONA DE UPLOAD (admin) ── */
+        .upload-zone {
+            margin-top: 4rem;
+            border: 1px dashed rgba(125, 176, 102, 0.3);
+            padding: 2rem;
+            text-align: center;
+        }
+ 
+        .upload-zone p {
+            font-size: 0.85rem;
+            color: rgba(245, 240, 232, 0.4);
+            line-height: 1.7;
+        }
+ 
+        .upload-zone p strong {
+            color: var(--verde-claro);
+        }
+ 
+        /* ── AVISO DE ACCESO ── */
+        .access-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: rgba(125, 176, 102, 0.07);
+            border-left: 3px solid rgba(125, 176, 102, 0.5);
+            padding: 1rem 1.25rem;
+            margin-bottom: 3.5rem;
+        }
+ 
+        .access-note svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--verde-claro);
+            fill: none;
+            stroke-width: 1.5;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+ 
+        .access-note p {
+            font-size: 0.82rem;
+            color: rgba(245, 240, 232, 0.6);
+            line-height: 1.7;
+        }
+ 
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid rgba(125, 176, 102, 0.15);
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: rgba(245, 240, 232, 0.5);
+        }
+ 
+        .footer-back {
+            font-size: 0.78rem;
+            color: rgba(245, 240, 232, 0.35);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+ 
+        .footer-back:hover {
+            color: var(--verde-claro);
+        }
+ 
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+ 
+            .file-download {
+                width: 100%;
+                justify-content: center;
+            }
+ 
+            footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="icononav2.png" alt="Logo AMMUCALE" onerror="this.style.display='none'" />
+            <span class="logo-text">AMMUCALE</span>
+        </a>
+        <div class="header-divider"></div>
+        <span class="header-badge">Área de documentos</span>
+    </header>
+ 
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <p class="page-eyebrow">Recursos internos</p>
+        <h1 class="page-title">Documentos y<br>archivos descargables</h1>
+        <p class="page-desc">
+            Aquí encontrarás los documentos, formularios y materiales de la asociación disponibles para descarga. Esta página no está enlazada públicamente desde el sitio web.
+        </p>
+ 
+        <!-- Aviso discreto -->
+        <div class="access-note">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <p>Esta página es de acceso interno. Comparte solo el enlace directo con personas autorizadas.</p>
+        </div>
+ 
+        <!-- ── SECCIÓN 1: Documentos institucionales ── -->
+        <div class="doc-section">
+            <p class="section-label">Documentos institucionales</p>
+            <div class="file-list">
+ 
+                <!-- Archivo 1 — cambia "href" por la ruta real de tu archivo -->
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">ESTADOS FINANCIEROS+CERTIFICACION+TP+INFORME GESTION 2025.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/1.ESTADOS FINANCIEROS+CERTIFICACION+TP+INFORME GESTION 2025.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">REQUISITOS ART 364.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/2. REQUISITOS ART 364.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">ESTATUTOS DE LA ASOCIACIÓN MUNICIPAL DE MUJERES CAMPESINAS.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/3.ESTATUTOS DE LA ASOCIACIÓN MUNICIPAL DE MUJERES CAMPESINAS.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">4. Certificado de camara de comercio 13-06-2026.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/4. Certificado de camara de comercio 13-06-2026.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">ACTA DE ASAMBLEA  2025.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/5. ACTA DE ASAMBLEA  2025.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">ESAL-REFORMA DE ESTATUTOS 2026.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/6.ESAL-REFORMA DE ESTATUTOS 2026.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">ESAL CERTIFICADO DE ANTECEDENTES AMMUCALE.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/7.ESAL CERTIFICADO DE ANTECEDENTES AMMUCALE.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">CERTIFICACION DE NO REMUNERACION JUNTA DIRECTIVA.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/8. CERTIFICACION DE NO REMUNERACION JUNTA DIRECTIVA.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">RUT DE AMMUCALE.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/141257025965 RUT DE AMMUCALE.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-main">
+                        <div class="file-icon pdf">
+                            <!-- Icono PDF -->
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name">DECLARACION DE RENTA 2025 ACTIVIDAD 9499 ASOCIACION.pdf</p>
+                            <p class="file-meta">PDF</p>
+                        </div>
+                    </div>
+                    <!-- Reemplaza "#" con la ruta real, ej: href="documentos/estatutos.pdf" -->
+                    <a class="file-download" href="documentos/1117632142305 DECLARACION DE RENTA 2025 ACTIVIDAD 9499 ASOCIACION.pdf" download>
+                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+ 
+    <!-- FOOTER -->
+    <footer>
+        <span class="footer-logo">AMMUCALE</span>
+        <a href="index.html" class="footer-back">← Volver al sitio principal</a>
+    </footer>
+ 
+</body>
+</html>
